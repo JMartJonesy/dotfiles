@@ -4,3 +4,4 @@
 
 waybar &
 mako &
+hypridle &

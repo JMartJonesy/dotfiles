@@ -10,9 +10,26 @@
       ./hardware-configuration.nix 
       inputs.home-manager.nixosModules.default
     ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Dual-boot with Windows needs this otherwise Windows time is wrong
+  time.hardwareClockInLocalTime = true;
+
+  # Sleep and Hibernate
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,9 +60,12 @@
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services.xserver = {
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+    videoDrivers = ["nvidia"];
   };
 
   sound.enable = true;
@@ -86,6 +106,14 @@
     xwayland.enable = true;
   };
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    # Certain features, including CLI integration and system authentication support,
+    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
+    polkitPolicyOwners = [ "jmartjonesy" ];
+  };
+
   environment.sessionVariables = {
     # Hint electron apps to use wayland
     #NIXOS_OZONE_WL = "1";
@@ -93,9 +121,42 @@
 
   hardware = {
     # OpenGL
-    opengl.enable = true;
-    # Most wayland compositors need this
-    nvidia.modesetting.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+
+    nvidia = {
+      # Modesetting is required.
+      modesetting.enable = true;
+
+      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+      # Enable this if you have graphical corruption issues or application crashes after waking
+      # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+      # of just the bare essentials.
+      powerManagement.enable = false;
+
+      # Fine-grained power management. Turns off GPU when not in use.
+      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+      powerManagement.finegrained = false;
+
+      # Use the NVidia open source kernel module (not to be confused with the
+      # independent third-party "nouveau" open source driver).
+      # Support is limited to the Turing and later architectures. Full list of 
+      # supported GPUs is at: 
+      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+      # Only available from driver 515.43.04+
+      # Currently alpha-quality/buggy, so false is currently the recommended setting.
+      open = false;
+
+      # Enable the Nvidia settings menu,
+      # accessible via `nvidia-settings`.
+      nvidiaSettings = true;
+
+      # Optionally, you may need to select the appropriate driver version for your specific GPU.
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 
   nix = {
@@ -127,13 +188,11 @@
     firefox
     brightnessctl
     killall
-    zulu
-    obsidian
     wl-clipboard
+    # Apps
     bambu-studio
-    koreader
+    obsidian
     vlc
-    foliate
     # Languages/Language Tools
     cmake
     gcc
@@ -141,15 +200,21 @@
     rustc
     go
     gnumake
+    zulu # Java
     # Hyprland
     waybar # Status Bar
     mako # Notification Daemon
     libnotify # Dependency of Mako
     grim # Screenshot Utility
+    slurp # Screenshot Helper
     hyprpaper # Wallpaper Manager
+    hyprlock # Lock Screen
+    hypridle # Idle Handler
+    hyprpicker # Color Picker
     kitty # Hyprlands's Default Terminal
     wofi # App Launcher
-    material-design-icons
+    wlogout # Logout Menu
+    material-design-icons # Font pack
   ];
 
   fonts.packages = with pkgs; [
