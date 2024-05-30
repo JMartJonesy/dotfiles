@@ -5,12 +5,13 @@
 { inputs, ... }:
 
 {
-  imports = [ 
+  imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix 
     ../shared/defaults.nix
     ../shared/apps.nix
     ./xserver.nix
+    ./misc.nix
     inputs.home-manager.nixosModules.default
   ];
 }
