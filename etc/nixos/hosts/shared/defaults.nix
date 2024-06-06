@@ -12,10 +12,11 @@
   # Dual-boot with Windows needs this otherwise Windows time is wrong
   time.hardwareClockInLocalTime = true;
 
-#  services.logind.extraConfig = ''
-#    # don’t shutdown when power button is short-pressed
-#    HandlePowerKey=ignore
-#  '';
+  # Disable Power Button Key so that Hypr can configure it
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

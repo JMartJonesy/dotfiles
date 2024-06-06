@@ -9,12 +9,6 @@
     AllowSuspendThenHibernate=no
   '';
 
-  # Disable Power Button Key So that Hypr can Configure it
-  services.logind.extraConfig = ''
-    # Don't shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
-
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
