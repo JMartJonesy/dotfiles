@@ -1,4 +1,6 @@
-TODO:
+TODO FOR FRAMEWORK 16:
+- Dual-boot with Windows
+- Setup fingerprint, bluetooth, wifi, camera, mic
 - Get rid of .config and .cache by moving everything into nixos configs
 - Add [reFIND](https://nixos.wiki/wiki/REFInd)
 - Add [secure boot](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
