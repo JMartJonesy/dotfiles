@@ -1,0 +1,1 @@
+Clone this into your /etc/ folder on a NixOS machine. You will need to replace the nixos folder already present in your /etc/ file. Also don't forget to backup your hardware-configuration.nix file in the /etc/nixos/ folder and move it into this newly clone folder.
