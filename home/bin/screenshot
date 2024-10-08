@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+while [[ -z "$FILENAME" ]]
+do
+  read -p "File name: " FILENAME
+done
+
+hyprctl dispatch movetoworkspacesilent 10,activewindow
+grim -g "$(slurp)" "$HOME/Pictures/screenshots/$FILENAME.png"
