@@ -6,6 +6,7 @@ TODO FOR FRAMEWORK 16:
 - Investigate [framework-tool](https://github.com/FrameworkComputer/framework-system) NOTE: This is added by nixos-hardware import
 - Add [Fwupd](https://wiki.nixos.org/wiki/Fwupd)
 - Get rid of .config and .cache by moving everything into nixos configs
+- Investigate [abm](https://community.frame.work/t/adaptive-backlight-management-abm/41055)
 - Add [reFIND](https://nixos.wiki/wiki/REFInd)
 - Add [secure boot](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
 - Add [impermanence](https://nixos.wiki/wiki/Impermanence)
