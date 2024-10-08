@@ -1,6 +1,10 @@
 TODO FOR FRAMEWORK 16:
-- Dual-boot with Windows
-- Setup fingerprint, bluetooth, wifi, camera, mic
+- Use [nixos-hardware](https://github.com/NixOS/nixos-hardware/tree/master/framework/16-inch/7040-amd)
+- Confirm framework [VIA tool](https://keyboard.frame.work/) works
+- Setup fingerprint (sudo fprintd-enroll $USER <- figure out how to impermanence this), bluetooth, wifi, camera, mic
+- Investigate [power management tool](https://gitlab.freedesktop.org/upower/power-profiles-daemon) NOTE: This is added by nixos-hardware import
+- Investigate [framework-tool](https://github.com/FrameworkComputer/framework-system) NOTE: This is added by nixos-hardware import
+- Add [Fwupd](https://wiki.nixos.org/wiki/Fwupd)
 - Get rid of .config and .cache by moving everything into nixos configs
 - Add [reFIND](https://nixos.wiki/wiki/REFInd)
 - Add [secure boot](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
@@ -8,3 +12,4 @@ TODO FOR FRAMEWORK 16:
 - Add [disk encryption](https://nixos.wiki/wiki/Full_Disk_Encryption)
 - Investigate [Disko](https://nixos.wiki/wiki/Disko)
 - Add [secrets](https://github.com/Mic92/sops-nix)
+- Dual-boot with Windows
