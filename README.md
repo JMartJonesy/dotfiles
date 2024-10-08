@@ -3,3 +3,4 @@ TODO:
 - Add reFIND
 - Add secure boot
 - Add impermanence
+- Add disk encryption
