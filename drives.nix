@@ -29,7 +29,7 @@
                 name = "cryptroot";
                 settings = {
                   allowDiscards = true;
-                  keyFile = "/tmp/secret.key";
+                  #keyFile = "/tmp/secret.key";
                   # https://0pointer.net/blog/unlocking-luks2-volumes-with-tpm2-fido2-pkcs11-security-hardware-on-systemd-248.html
                   #crypttabExtraOpts = [
                   #  "fido2-device=auto"
