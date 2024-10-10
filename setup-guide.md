@@ -41,7 +41,7 @@
         ```
 18. Install nixos on your drive `sudo nixos-install`
 19. Enter root password when prompted
-20. Set password for the user you created in step 17 `nixos-enter --root /mnt -c 'passwd <YOUR USERNAME>'`
+20. Set password for the user you created in step 17 `sudo nixos-enter --root /mnt -c 'passwd <YOUR USERNAME>'`
 21. `reboot` and login as your user
 
 
