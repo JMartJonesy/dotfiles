@@ -35,3 +35,8 @@
 16. Install nixos on your drive `sudo nixos-install`
 17. Enter root password when prompted
 18. If everything succeeds `reboot`
+
+
+REFERENCES:
+- https://github.com/nix-community/disko/blob/master/docs/quickstart.md
+- https://haseebmajid.dev/posts/2024-07-30-how-i-setup-btrfs-and-luks-on-nixos-using-disko/?utm_source=perplexity
