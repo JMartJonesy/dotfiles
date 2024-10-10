@@ -1,6 +1,6 @@
 TODO FOR FRAMEWORK 16:
 - [x] Use [nixos-hardware](https://github.com/NixOS/nixos-hardware/tree/master/framework/16-inch/7040-amd)
-- [ ] Confirm framework [VIA tool](https://keyboard.frame.work/) works
+- [ ] Confirm framework [VIA tool](https://keyboard.frame.work/) works **Doesn't work with firefox :'(**
 - [ ] Setup fingerprint (sudo fprintd-enroll $USER <- figure out how to impermanence this), bluetooth, wifi, camera (try Guvcview), mic
 - [x] Investigate [power management tool](https://gitlab.freedesktop.org/upower/power-profiles-daemon) NOTE: This is added by nixos-hardware import
 - [ ] Investigate [framework-tool](https://github.com/FrameworkComputer/framework-system) NOTE: This is added by nixos-hardware import
