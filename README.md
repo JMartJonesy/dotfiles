@@ -5,7 +5,7 @@ TODO FOR FRAMEWORK 16:
 - [x] Investigate [power management tool](https://gitlab.freedesktop.org/upower/power-profiles-daemon) NOTE: This is added by nixos-hardware import
 - [ ] Investigate [framework-tool](https://github.com/FrameworkComputer/framework-system) NOTE: This is added by nixos-hardware import **[Doesn't work currently](https://github.com/FrameworkComputer/framework-system/issues/43)**
 - [x] Add [Fwupd](https://wiki.nixos.org/wiki/Fwupd)
-- [ ] Investigate setting up inputmodule-control program to configure rgb panels next to keyboard
+- [ ] Investigate setting up inputmodule-control program to configure rgb panels next to keyboard **Can use [webtool](https://ledmatrix.frame.work/) on chromium for led matrix for now**
 - [ ] Get rid of .config and .cache by moving everything into nixos configs
 - [ ] Investigate [abm](https://community.frame.work/t/adaptive-backlight-management-abm/41055)
 - [ ] Add [reFIND](https://nixos.wiki/wiki/REFInd) **Currently not possible with lanzaboote**
