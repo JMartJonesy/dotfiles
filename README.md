@@ -1,8 +1,8 @@
 TODO FOR FRAMEWORK 16:
-- [ ] Use [nixos-hardware](https://github.com/NixOS/nixos-hardware/tree/master/framework/16-inch/7040-amd)
+- [x] Use [nixos-hardware](https://github.com/NixOS/nixos-hardware/tree/master/framework/16-inch/7040-amd)
 - [ ] Confirm framework [VIA tool](https://keyboard.frame.work/) works
 - [ ] Setup fingerprint (sudo fprintd-enroll $USER <- figure out how to impermanence this), bluetooth, wifi, camera (try Guvcview), mic
-- [ ] Investigate [power management tool](https://gitlab.freedesktop.org/upower/power-profiles-daemon) NOTE: This is added by nixos-hardware import
+- [x] Investigate [power management tool](https://gitlab.freedesktop.org/upower/power-profiles-daemon) NOTE: This is added by nixos-hardware import
 - [ ] Investigate [framework-tool](https://github.com/FrameworkComputer/framework-system) NOTE: This is added by nixos-hardware import
 - [ ] Add [Fwupd](https://wiki.nixos.org/wiki/Fwupd)
 - [ ] Investigate setting up inputmodule-control program to configure rgb panels next to keyboard
