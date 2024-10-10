@@ -8,8 +8,8 @@ TODO FOR FRAMEWORK 16:
 - [ ] Investigate setting up inputmodule-control program to configure rgb panels next to keyboard
 - [ ] Get rid of .config and .cache by moving everything into nixos configs
 - [ ] Investigate [abm](https://community.frame.work/t/adaptive-backlight-management-abm/41055)
-- [ ] Add [reFIND](https://nixos.wiki/wiki/REFInd)
-- [ ] Add [secure boot](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
+- [ ] Add [reFIND](https://nixos.wiki/wiki/REFInd) **Currently not possible with lanzaboote**
+- [x] Add [secure boot](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
 - [ ] Add [impermanence](https://nixos.wiki/wiki/Impermanence)
 - [x] Add [disk encryption](https://nixos.wiki/wiki/Full_Disk_Encryption)
 - [x] Investigate [Disko](https://nixos.wiki/wiki/Disko)
