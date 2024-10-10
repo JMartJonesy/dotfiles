@@ -43,7 +43,10 @@
 19. Enter root password when prompted
 20. Set password for the user you created in step 17 `sudo nixos-enter --root /mnt -c 'passwd <YOUR USERNAME>'`
 21. `reboot` and login as your user
-
+22. Setup wifi but this time with nmcli  ```
+        nmcli radio wifi on
+        nmcli dev wifi connect network-ssid password "network-password"
+        ```
 
 REFERENCES:
 - https://github.com/nix-community/disko/blob/master/docs/quickstart.md
