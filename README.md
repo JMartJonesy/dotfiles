@@ -8,6 +8,7 @@ TODO FOR FRAMEWORK 16:
 - [ ] Investigate setting up inputmodule-control program to configure rgb panels next to keyboard **Can use [webtool](https://ledmatrix.frame.work/) on chromium for led matrix for now**
 - [ ] Get rid of .config and .cache by moving everything into nixos configs
 - [ ] Investigate [abm](https://community.frame.work/t/adaptive-backlight-management-abm/41055)
+- [ ] Figure out hibernation to encrypted swap
 - [ ] Add [reFIND](https://nixos.wiki/wiki/REFInd) **Currently not possible with lanzaboote**
 - [x] Add [secure boot](https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md)
 - [ ] Add [impermanence](https://nixos.wiki/wiki/Impermanence)
