@@ -32,7 +32,7 @@
            ./disk-config.nix
          ];
         ```
-16. Enable netoworkmanager otherwise you will have no wifi on reboot `networking.networkmanager.enable = true;`
+16. Enable networkmanager otherwise you will have no wifi on reboot `networking.networkmanager.enable = true;`
 17. Add user to configuration.nix there should already be a block you can update with the following ```
   users.users.<YOUR USERNAME> = {
     isNormalUser = true;
@@ -41,7 +41,7 @@
         ```
 18. Install nixos on your drive `sudo nixos-install`
 19. Enter root password when prompted
-20. Set password for the user you created in step 17 `nixos-enter --root /mnt -c 'passwd alice'`
+20. Set password for the user you created in step 17 `nixos-enter --root /mnt -c 'passwd <YOUR USERNAME>'`
 21. `reboot` and login as your user
 
 
