@@ -103,10 +103,6 @@
         background-color: #a6e3a1;
       }
 
-      #network {
-        padding-right: 17px;
-      }
-
       #clock {
         font-family: JetBrainsMono Nerd Font;
         background-color: #cba6f7;

@@ -9,6 +9,7 @@
     ./services.nix
     ./programs.nix
     ./greeter.nix
+    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -24,17 +25,6 @@
   networking.hostName = "nixos";
   # Enable networking
   networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -51,17 +41,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  #sound.enable = true;
-
+  # Needed for hyprlock
   security.rtkit.enable = true;
   security.pam.services.hyprlock = {};
-
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-  };
 
   nix = {
     gc = {
@@ -88,6 +70,7 @@
     ignoreShellProgramCheck = true;
   };
 
+  # Some apps can't use Hyprland wayland so they use gtk?????
   xdg = {
     portal = {
       enable = true;
@@ -100,13 +83,14 @@
     };
   };
 
-  #environment.sessionVariables = {
+  environment.sessionVariables = {
     # Hint electron apps to use wayland
-    #NIXOS_OZONE_WL = "1";
-  #};
+    NIXOS_OZONE_WL = "1";
+  };
 
   home-manager = {
     extraSpecialArgs = { 
+      # Pass along the home-manager nixos module
       inherit inputs;
     };
     users = {
@@ -121,5 +105,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }

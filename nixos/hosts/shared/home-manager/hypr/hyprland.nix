@@ -8,13 +8,14 @@
       # Please note not all available settings / options are set here.
       # For a full list, see the wiki
 
+#      debug = {
+#        enable_stdout_logs = true;
+#      };
+
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      #monitor = ",preferred,auto,auto";
+      monitor = ",preferred,auto,1.333333";
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.conf
 
       # Some default env vars.
       #env = [
@@ -26,10 +27,7 @@
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input = {
-        kb_layout = "us"; #kb_variant =
-        #kb_model =
-        #kb_options =
-        #kb_rules =
+        kb_layout = "us";
 
         follow_mouse = 1;
 
@@ -51,9 +49,6 @@
         #};
 
         layout = "dwindle";
-
-        # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-        allow_tearing = false;
 
         # Stops the focus from moving left to right when no screen is above the current screen
         no_focus_fallback = true;
@@ -128,9 +123,9 @@
       # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
       # Shutdown when the lid is closed
-      bindl = [
-        ", switch:on:Lid Switch, exec, systemctl poweroff"
-      ];
+      #bindl = [
+      #  ", switch:on:Lid Switch, exec, systemctl poweroff"
+      #];
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       "$mainMod" = "SUPER";
@@ -227,13 +222,9 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-#      debug = {
-#        enable_stdout_logs = true;
-#      };
-
       source = [
         # Sets up monitors using config from nwg-displays
-        "~/.config/hypr/monitors.conf"
+        #"~/.config/hypr/monitors.conf"
       ];
 
       exec-once = [

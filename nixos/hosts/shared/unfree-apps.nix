@@ -8,6 +8,5 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     obsidian
-    material-design-icons # Font pack
   ];
 }
