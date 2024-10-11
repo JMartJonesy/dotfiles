@@ -47,7 +47,8 @@
         nmcli radio wifi on
         nmcli dev wifi connect network-ssid password "network-password"
         ```
-
+23. Confirm systemd-boot is the currently bootloader as this is required to steup lanzaboote for Secure Boot `bootctl status`
 REFERENCES:
 - https://github.com/nix-community/disko/blob/master/docs/quickstart.md
 - https://haseebmajid.dev/posts/2024-07-30-how-i-setup-btrfs-and-luks-on-nixos-using-disko/?utm_source=perplexity
+- https://github.com/nix-community/lanzaboote/blob/master/docs/QUICK_START.md
