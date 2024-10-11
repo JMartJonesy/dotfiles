@@ -133,7 +133,7 @@ sudo sbctl verify
 ```bash
 sudo sbctl enroll-keys --microsoft
 ```
-33. Reboot and confirm nixos boots. You will need to enter your encryption key every time you boot to unlock your drive
+33. Reboot and confirm nixos boots. You will need to enter your encryption key set in step 10 every time you boot to unlock your drive
 34. (Optional) Register your fingerprint (Need to have `fprintd` installed)
 ```bash
 sudo fprintd-enroll $USER
