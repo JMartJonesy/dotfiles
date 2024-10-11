@@ -41,7 +41,7 @@ devices = /dev/<YOUR DRIVE NAME HERE
 ```bash
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/disk-config.nix
 ```
-10. Enter your encryption key when prompted (Write this down somewhere)
+10. Enter your encryption key when prompted (Save this down somewhere like 1Password)
 11. Confirm everything was mounted as expected 
 ```bash
 mount | grep /mnt
