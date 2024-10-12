@@ -20,3 +20,5 @@ TODO FOR FRAMEWORK 16:
 NOTES:
 - Use Btrfs as filesystem
 - Enable vrr and see how power consumption changes
+
+- nix-collect-garbage to clean up old package links
