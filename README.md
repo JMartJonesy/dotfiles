@@ -21,4 +21,4 @@ NOTES:
 - Use Btrfs as filesystem
 - Enable vrr and see how power consumption changes
 
-- nix-collect-garbage to clean up old package links
+- nix-collect-garbage to clean up old package links (see [here](https://nixos.org/guides/nix-pills/11-garbage-collector.html))
