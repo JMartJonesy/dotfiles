@@ -23,3 +23,4 @@ NOTES:
 - Enable vrr and see how power consumption changes
 
 - nix-collect-garbage to clean up old package links (see [here](https://nixos.org/guides/nix-pills/11-garbage-collector.html))
+- Upgrade with `sudo nixos-rebuild switch --upgrade --flake /etc/nixos/#<HOST>
