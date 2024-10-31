@@ -4,6 +4,11 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    # See https://hyprland.org/plugins/
+    plugins = [
+      #pkgs.hyprlandPlugins.<PLUGIN_HERE>
+    ];
+
     settings = {
       # Please note not all available settings / options are set here.
       # For a full list, see the wiki
@@ -15,15 +20,16 @@
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor = ",preferred,auto,1.333333";
 
+      # Ensure Wayland doesn't try to scale GTK apps
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
-      # Some default env vars.
-      #env = [
-        #"HYPRCURSOR_THEME,rose-pine-hyprcursor"
-        #"HYPRCURSOR_SIZE,30"
-        #"XCURSOR_THEME,Adwaita"
-        #"XCURSOR_SIZE,30"
-      #];
+      env = [
+        #"GDK_SCALE,2" # Scale GTK apps since they don't scale nicely using Wayland
+      ];
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input = {
@@ -39,14 +45,10 @@
       };
 
       general = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
-        #};
 
         layout = "dwindle";
 
@@ -55,7 +57,6 @@
       };
 
       decoration = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
         rounding = 10;
 
@@ -68,7 +69,6 @@
         drop_shadow = "yes";
         shadow_range = 4;
         shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
       };
 
       animations = {
@@ -95,12 +95,10 @@
       };
 
       gestures = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
         workspace_swipe = "on";
       };
 
       misc = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
         force_default_wallpaper = -1; # Set to 0 to disable the anime mascot wallpapers
       };
 
@@ -146,7 +144,8 @@
         #", xf86audioplaypause, exec,"
         ", xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
-        '', Print, exec, kitty --class dialog -e "$HOME/bin/screenshot"''
+        #'', Print, exec, kitty --class dialog -e "$HOME/bin/screenshot"''
+        ", Print, exec, kitty --class dialog -e j-screenshot"
 
         "$mainMod, Q, killactive,"
         "$mainMod, V, togglefloating,"

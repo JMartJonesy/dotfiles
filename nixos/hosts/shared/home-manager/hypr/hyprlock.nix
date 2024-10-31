@@ -7,7 +7,7 @@
 
     settings = {
       background = {
-        path = "$HOME/.cache/lockscreen_wallpaper.png";   # only png supported for now
+        path = "$HOME/Pictures/wallpapers/lockscreen_wallpaper.png"; # only png supported for now
       };
 
       input-field = {
@@ -47,7 +47,7 @@
       };
 
       image = {
-        path = "$HOME/.cache/lockscreen_image.png";
+        path = "$HOME/Pictures/wallpapers/lockscreen_image.png";
         size = 560;
         rounding = -1; # negative values mean circle
         border_size = 4;

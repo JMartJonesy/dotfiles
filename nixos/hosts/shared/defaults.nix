@@ -1,14 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { inputs, pkgs, ... }:
 
 {
   imports = [
     ./services.nix
-    ./programs.nix
     ./greeter.nix
+    ./stylix.nix
+    #./programs.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -97,6 +94,19 @@
       "jmartjonesy" = import ./home-manager/home.nix;
     };
     backupFileExtension = "hm-backup";
+  };
+
+  system = {
+    autoUpgrade = {
+      enable = true;
+      # Don't forget to set system.autoUpgrade.flake param in your host configuration.nix file
+      flags = [
+        "--update-input"
+        "nixpkgs"
+        "--commit-lock-file"
+      ];
+      allowReboot = true;
+    };
   };
 
   # This value determines the NixOS release from which the default

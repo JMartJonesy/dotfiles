@@ -24,16 +24,12 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-    };
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
+    stylix = {
+      url = "github:danth/stylix";
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       "framework16" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

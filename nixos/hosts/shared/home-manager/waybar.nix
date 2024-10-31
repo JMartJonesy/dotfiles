@@ -35,20 +35,20 @@
         padding: 6px 18px;
         margin: 6px 3px;
         border-radius: 4px;
-        background-color: #1e1e2e;
         color: #cdd6f4;
+        background-color: #1e1e2e;
       }
 
       #workspaces button.active {
         color: #1e1e2e;
-        background-color: #cdd6f4;
+        background-color: #cba6f7;
       }
 
       #workspaces button:hover {
-       box-shadow: inherit;
-       text-shadow: inherit;
-       color: #1e1e2e;
-       background-color: #cdd6f4;
+        box-shadow: inherit;
+        text-shadow: inherit;
+        color: #1e1e2e;
+        background-color: #9BCA68;
       }
 
       #workspaces button.urgent {
@@ -69,15 +69,6 @@
         padding: 6px 12px;
         background-color: #cba6f7;
         color: #181825;
-      }
-
-      #custom-logo {
-        padding-right: 7px;
-        padding-left: 7px;
-        margin-left: 5px;
-        font-size: 15px;
-        border-radius: 8px 0px 0px 8px;
-        color: #1793d1;
       }
 
       @keyframes blink {
@@ -103,21 +94,14 @@
         background-color: #a6e3a1;
       }
 
-      #clock {
-        font-family: JetBrainsMono Nerd Font;
-        background-color: #cba6f7;
-      }
-
-
       tooltip {
-        border-radius: 8px;
-        padding: 15px;
-        background-color: #131822;
+        border-radius: 4px;
+        background-color: #9BCA68;
       }
 
       tooltip label {
-        padding: 5px;
-        background-color: #131822;
+        color: #181825;
+        background-color: #9BCA68;
       }
     '';
 
@@ -178,9 +162,8 @@
           };
         };
         clock = {
-          tooltip-format = "<tt>{calendar}</tt>";
-          format-alt = "  {:%a, %d %b %Y}";
-          format = "  {:%I:%M %p}";
+          format = "  {:%H:%M}";
+          tooltip-format = "{:%d-%m-%Y}";
         };
         tray = {
           spacing = 10;
@@ -229,7 +212,7 @@
           nospacing = 1;
         };
         battery = {
-          format = "{capacity}% {icon}";
+          format = "{power}W / {capacity}% {icon}";
           format-icons = {
             charging = [
               "󰢜"

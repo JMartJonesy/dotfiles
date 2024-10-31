@@ -2,15 +2,13 @@
 
 {
   imports = [
-    inputs.ags.homeManagerModules.default
-    inputs.nix-colors.homeManagerModules.default
     ./cli.nix
-    ./kickstart.nixvim/nixvim.nix
     ./waybar.nix
     ./hypr/hypr.nix
     ./wlogout.nix
     ./mako.nix
     ./wofi.nix
+    ./kickstart.nixvim/nixvim.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should manage.
@@ -25,29 +23,21 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  # Theming
-  colorscheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
-
-  # TODO: Figure out how to move this here from configuration.nix
-  # Allow unfree packages
-  #nixpkgs.config.allowUnfree = true;
-
-  fonts = {
-    fontconfig = {
-      enable = true;
-    };
+  # Let Home Manager install and manage itself.
+  programs.home-manager = {
+    enable = true;
   };
+
+  # Allow unfree packages like obsidian
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   home.packages = with pkgs; [
-    # Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    hack-font
     material-design-icons
 
     # CLI
-    libnotify # Dependency of Mako
+    libnotify # Dependency of Mako notification manager
     grim # Screenshot Utility
     slurp # Screenshot Helper
     #ripgrep
@@ -56,19 +46,14 @@
     brightnessctl
     killall
     wl-clipboard
-    wev
-    wlr-randr
-    tldr
+    wev # Wayland event viewer, useful for debugging events
+    wlr-randr # Wayland compositor manager (Use to change resolution,refresh rate, etc.)
     nh
     #nix-output-monitor
     #nvd
     gh
-    fastfetch
-
-    # Apps
-    bambu-studio
-    vlc
-    vdhcoapp # Firefox Video DownloadHelper Extension add-on support RUN `vdhcoapp install` to setup
+    fastfetch # Show linux stats
+    cht-sh # CLI cheat.sh
 
     # Languages/Language Tools
     android-tools
@@ -81,44 +66,39 @@
     rustc
     zulu # Java
 
-    # GUI
-    #nw-displays # Configures displayes  NOTE: This util save to ~/.config/nwg-displays/config
+    # Apps
+    bambu-studio
+    vlc
+    vdhcoapp # Firefox Video DownloadHelper Extension add-on support RUN `vdhcoapp install` to setup
+    obsidian
     guvcview # Configure camera settings
+    displaycal
 
-    #AGS (https://github.com/Aylur/dotfiles/tree/main?tab=readme-ov-file)
-#    bun
-#    dart-sass
-#    fd
-#    swww
-#    matugen
-#    fzf
-#    wf-recorder
-#    wayshot
-#    swappy
-#    asusctl
-#    supergfxctl
+    # You can also create simple shell scripts directly inside your configuration.
+    (writeShellScriptBin "j-screenshot" ''
+        while [[ -z "$FILENAME" ]]
+        do
+          read -p "File name: " FILENAME
+        done
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+        hyprctl dispatch movetoworkspacesilent 10,activewindow
+        grim -g "$(slurp)" "$HOME/Pictures/screenshots/$FILENAME.png"
+    '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+  programs.firefox = {
+    enable = true;
+  };
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+  home.file = {
+    "Pictures/screenshots/.keep" = {
+      enable = true;
+      text = ""; # Empty file so that directory is created
+    };
+    "Pictures/wallpapers/.keep" = {
+      enable = true;
+      text = ""; # Empty file so that directory is created
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -140,37 +120,4 @@
     EDITOR = "nvim";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager = {
-    enable = true;
-  };
-
-  programs.firefox = {
-    enable = true;
-  };
-
-  programs.ags = {
-    enable = true;
-    # null or path, leave as null if you don't wnat hm to manage the config
-    #configDir = ./home-manager/ags;
-    # additional packages to add to gjs's runtime
-    extraPackages = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
-    ];
-  };
-
-  # Have 1password manage your ssh keys
-#  _: let
-#       onePassPath = "~/.1password/agent.sock";
-#     in {
-#       programs.ssh = {
-#         enable = true;
-#         extraConfig = ''
-#           Host *
-#             IdentityAgent ${onePassPath}
-#           '';
-#       };
-#     };
 }

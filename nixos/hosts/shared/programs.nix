@@ -1,6 +1,11 @@
 { ... }:
 
 {
+  # PUT PROGRAMS HERE THAT RE NOT CONFIGURABLE BY HOME-MANAGER
+
+  # Allow unfree packages like obsidian
+  nixpkgs.config.allowUnfree = true;
+
   # Needed to use OG kickstart.nvim
   #programs.nix-ld = {
   #  enable = true;
@@ -14,6 +19,18 @@
     # require enabling PolKit integration on some desktop environments (e.g. Plasma).
     polkitPolicyOwners = [ "jmartjonesy" ];
   };
+  # Have 1password manage your ssh keys
+  #  _: let
+  #       onePassPath = "~/.1password/agent.sock";
+  #     in {
+  #       programs.ssh = {
+  #         enable = true;
+  #         extraConfig = ''
+  #           Host *
+  #             IdentityAgent ${onePassPath}
+  #           '';
+  #       };
+  #     };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -22,5 +39,4 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
 }

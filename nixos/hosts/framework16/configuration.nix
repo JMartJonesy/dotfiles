@@ -6,27 +6,32 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./drives.nix
-      inputs.nixos-hardware.nixosModules.framework-16-7040-amd
-      ../shared/defaults.nix
-      ../shared/unfree-apps.nix
-      inputs.lanzaboote.nixosModules.lanzaboote
-    ];
+  [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./disko.nix
+    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+    ../shared/defaults.nix
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
 
-    services.fwupd.enable = true; # Firmware updater
+  services.fwupd.enable = true; # Firmware updater
 
-    environment.systemPackages = [
-      pkgs.sbctl # To debug/troubleshoot Secure Boot
-      pkgs.chromium # To configure framework keyboard through VIA web-tool
-    ];
+  environment.systemPackages = [
+    pkgs.sbctl # To debug/troubleshoot Secure Boot
+    pkgs.chromium # To configure framework keyboard through VIA web-tool
+  ];
 
-    boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    boot.lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
+
+  system.autoUpgrade = {
+    flake = "/etc/nixos/#framework16";
+  };
 }
 
