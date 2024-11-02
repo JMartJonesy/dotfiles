@@ -1,12 +1,13 @@
-{ inputs, pkgs, ... }:
+{ pkgs, home-manager, nixvim, ... }:
 
 {
   imports = [
     ./services.nix
     ./greeter.nix
     ./stylix.nix
-    #./programs.nix
-    inputs.home-manager.nixosModules.default
+    ./unfree.nix
+    ./programs.nix
+    home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -71,7 +72,12 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [ 
+        # Enables screensharing optimized for hyprland
+        pkgs.xdg-desktop-portal-hyprland
+        # Enables file-picker since hyprland doesn't provide one
+        pkgs.xdg-desktop-portal-gtk
+      ];
       config = {
         common = {
           default = "*";
@@ -83,13 +89,19 @@
   environment.sessionVariables = {
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
+    # Hint GTK aps to use Wayland
+    GDK_BACKEND = "wayland";
+    # Hint Qt apps to use Wayland
+    QT_QPA_PLATFORM = "wayland";
   };
 
   home-manager = {
     extraSpecialArgs = { 
-      # Pass along the home-manager nixos module
-      inherit inputs;
+      # Pass along the nixvim nixos module
+      inherit nixvim;
     };
+    useGlobalPkgs = true;
+    #useUserPackages = true;
     users = {
       "jmartjonesy" = import ./home-manager/home.nix;
     };

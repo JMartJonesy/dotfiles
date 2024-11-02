@@ -29,13 +29,38 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    disko,
+    home-manager,
+    nixos-hardware,
+    lanzaboote,
+    nixvim,
+    stylix,
+    ... }: {
     nixosConfigurations = {
-      "framework16" = nixpkgs.lib.nixosSystem {
+      framework16 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit disko nixos-hardware home-manager lanzaboote stylix nixvim;
+        };
         modules = [
           ./hosts/framework16/configuration.nix
+          /*home-manager.nixosModules.home-manager
+          {
+            extraSpecialArgs = {
+              inherit nixvim;
+            };
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."jmartjonesy".imports = [
+                  ./hosts/shared/home-manager/home.nix
+              ];
+              backupFileExtension = "hm-backup";
+            };
+          }
+          */
         ];
       };
     };

@@ -2,16 +2,16 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ inputs, lib, pkgs, ... }:
+{ lib, pkgs, nixos-hardware, lanzaboote, ... }:
 
 {
   imports =
   [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disko.nix
-    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+    nixos-hardware.nixosModules.framework-16-7040-amd
     ../shared/defaults.nix
-    inputs.lanzaboote.nixosModules.lanzaboote
+    lanzaboote.nixosModules.lanzaboote
   ];
 
   services.fwupd.enable = true; # Firmware updater

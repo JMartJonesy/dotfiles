@@ -38,13 +38,4 @@
       '';
     };
   };
-
-  # Service for AGS
-  #services.upower = {
-  #  enable = true;
-  #};
-  #services.gvfs = {
-  #  enable = true;
-  #};
-
 }

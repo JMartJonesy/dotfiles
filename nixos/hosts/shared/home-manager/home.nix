@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, inputs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -28,8 +28,13 @@
     enable = true;
   };
 
-  # Allow unfree packages like obsidian
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    # These are needed here so that I can reference it in git.extraConfig
+  #  "1password"
+  #  "1password-gui"
+
+  #  "obsidian"
+  #];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -70,9 +75,11 @@
     bambu-studio
     vlc
     vdhcoapp # Firefox Video DownloadHelper Extension add-on support RUN `vdhcoapp install` to setup
-    obsidian
     guvcview # Configure camera settings
     displaycal
+    obsidian
+    #1password
+    #1password-gui
 
     # You can also create simple shell scripts directly inside your configuration.
     (writeShellScriptBin "j-screenshot" ''
@@ -120,4 +127,13 @@
     EDITOR = "nvim";
   };
 
+  # 1password is configured in programs.nix
+  # Have 1password manage your ssh keys
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+    Host *
+        IdentityAgent ~/.1password/agent.sock
+    '';
+  };
 }

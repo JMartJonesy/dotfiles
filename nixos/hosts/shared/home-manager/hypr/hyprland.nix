@@ -18,7 +18,7 @@
 #      };
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
-      monitor = ",preferred,auto,1.333333";
+      monitor = ",preferred,auto,1.333333,vrr,2";
 
       # Ensure Wayland doesn't try to scale GTK apps
       xwayland = {

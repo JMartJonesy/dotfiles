@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.shellAliases = {
@@ -265,6 +265,23 @@
         side-by-side = true;
         navigate = true;
       };
+    };
+    
+    extraConfig = {
+      gpg = {
+        format = "ssh";
+      };
+      "gpg \"ssh\""= {
+        program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+      };
+      commit = {
+        gpgsign = true;
+      };
+
+      user = {
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG+s+6JLrM+Gk1LMN3m7rGRpr5XDQv2B9+vpsixHTPUF";
+      };
+
     };
   };
 
