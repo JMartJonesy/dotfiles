@@ -16,7 +16,7 @@ TODO FOR FRAMEWORK 16:
 - [x] Add [disk encryption](https://nixos.wiki/wiki/Full_Disk_Encryption)
 - [x] Add [Disko](https://nixos.wiki/wiki/Disko)
 - [ ] Add [secrets](https://github.com/Mic92/sops-nix)
-- [ ] Dual-boot with Windows
+- [x] Dual-boot with Windows
 
 NOTES:
 - Use Btrfs as filesystem
